@@ -1,6 +1,5 @@
-export * from "./action-types";
-export * from "./action-creators";
-export * from "./action-types";
-export * from "./actions";
-export * from "./reducers";
-export * from "./store";
+export * from './store';
+export * from './reducers';
+export * from './actions';
+export * as actionCreators from './action-creators';
+export * from './action-types';

@@ -1,8 +1,9 @@
-import { combineReducers } from "redux";
-import { usersReducer } from "./usersReducer"
+import { combineReducers } from 'redux';
 
-export const reducers = combineReducers({
-  users: usersReducer
-})
+const reducers = combineReducers({
+  erase: () => 'this',
+});
 
-export type RootState = ReturnType<typeof reducers>
+export default reducers;
+
+export type RootState = ReturnType<typeof reducers>;

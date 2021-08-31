@@ -1,9 +1,12 @@
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from '&components/App';
+import { store } from '&state';
 import '&sass/main.scss';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
-
-if (module.hot) {
-  module.hot.accept();
-}
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
