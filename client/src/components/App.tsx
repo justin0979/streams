@@ -1,32 +1,29 @@
-import { Router, Route, Link } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import history from '&src/history';
-
-const pageOne = () => {
-  return (
-    <div>
-      <h1>Page One</h1>
-      <Link to="/two">Page Two</Link>
-    </div>
-  );
-};
-
-const pageTwo = () => {
-  return (
-    <div>
-      <h1>Page Two</h1>
-      <Link to="/">Page One</Link>
-    </div>
-  );
-};
+import StreamList from '&streams/StreamList';
+import StreamEdit from '&streams/StreamEdit';
+import StreamDelete from '&streams/StreamDelete';
+import StreamShow from '&streams/StreamShow';
+import StreamCreate from '&streams/StreamCreate';
+import Nav from './Nav';
 
 const App: React.FC = () => {
   return (
     <Router history={history}>
-      <div>
-        <h1>App</h1>
-        <Route path="/" exact component={pageOne} />
-        <Route path="/two" exact component={pageTwo} />
-      </div>
+      <Nav />
+      <Route path="/" exact component={StreamList} />
+      <Route path="/streams/edit" exact component={StreamEdit} />
+      <Route
+        path="/streams/new"
+        exact
+        component={StreamCreate}
+      />
+      <Route
+        path="/streams/delete"
+        exact
+        component={StreamDelete}
+      />
+      <Route path="/streams/show" exact component={StreamShow} />
     </Router>
   );
 };
