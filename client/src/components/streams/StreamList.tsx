@@ -1,9 +1,5 @@
 const StreamList: React.FC = () => {
-  return (
-    <div>
-      <h1>Stream List</h1>
-    </div>
-  );
+  return <div>Stream List</div>;
 };
 
 export default StreamList;

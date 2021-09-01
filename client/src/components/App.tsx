@@ -5,12 +5,14 @@ import StreamEdit from '&streams/StreamEdit';
 import StreamDelete from '&streams/StreamDelete';
 import StreamShow from '&streams/StreamShow';
 import StreamCreate from '&streams/StreamCreate';
+import Header from './Header';
 import Nav from './Nav';
 
 const App: React.FC = () => {
   return (
     <Router history={history}>
       <Nav />
+      <Header />
       <Route path="/" exact component={StreamList} />
       <Route path="/streams/edit" exact component={StreamEdit} />
       <Route
