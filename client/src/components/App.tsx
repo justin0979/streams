@@ -1,10 +1,12 @@
 import { Router, Route } from 'react-router-dom';
 import history from '&src/history';
-import StreamList from '&streams/StreamList';
-import StreamEdit from '&streams/StreamEdit';
-import StreamDelete from '&streams/StreamDelete';
-import StreamShow from '&streams/StreamShow';
-import StreamCreate from '&streams/StreamCreate';
+import {
+  StreamCreate,
+  StreamDelete,
+  StreamEdit,
+  StreamList,
+  StreamShow,
+} from '&streams';
 import Header from './Header';
 import Nav from './Nav';
 
