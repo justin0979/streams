@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 const GoogleAuth: React.FC = () => {
-  const [auth, setAuth] = useState<any>();
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
 
   useEffect(() => {
     window.gapi.load('client.auth2', () => {
@@ -12,7 +12,8 @@ const GoogleAuth: React.FC = () => {
           scope: 'email',
         })
         .then(() => {
-          setAuth(window.gapi.auth2.getAuthInstance());
+          const auth = window.gapi.auth2.getAuthInstance();
+          setIsSignedIn(auth.isSignedIn.get());
         });
     });
   }, []);
