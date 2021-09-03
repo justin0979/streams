@@ -1,8 +1,11 @@
 .right {
   float: right;
+  display: flex;
+  height: 2rem;
 }
 
-.cleared {
+.cleared::after {
   content: '';
   clear: both;
+  display: flex;
 }
