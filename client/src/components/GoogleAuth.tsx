@@ -1,10 +1,16 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
-const GoogleAuth: React.FC = () => {
+interface GoogleAuthProps {
+  className: string;
+}
+
+const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
 
   useEffect(() => {
+    // Load the library
     window.gapi.load('client.auth2', () => {
+      // Initialize the library
       window.gapi.client
         .init({
           clientId:
@@ -18,11 +24,7 @@ const GoogleAuth: React.FC = () => {
     });
   }, []);
 
-  return (
-    <div>
-      <h1>Google Auth</h1>
-    </div>
-  );
+  return <div className={`${props.className}`}>GoogleAuth</div>;
 };
 
 export default GoogleAuth;

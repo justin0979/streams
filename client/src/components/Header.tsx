@@ -3,15 +3,15 @@ import GoogleAuth from './GoogleAuth';
 
 const Header: React.FC = () => {
   return (
-    <div className="menu">
+    <div className="menu menu__split">
       <Link to="/" className="menu__item">
         Streamer
       </Link>
-      <div className="menu--right">
+      <div className="menu__split-right">
         <Link to="/" className="menu__item">
           Streams
         </Link>
-        <GoogleAuth />
+        <GoogleAuth className="menu__item" />
       </div>
     </div>
   );
