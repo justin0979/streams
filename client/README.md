@@ -1,10 +1,15 @@
-# Base Development Envrionment with React and Redux (using Typescript)
+# CRUD app using my devconfig
+
+Course CRUD material is from Udemy course. Development environment is mine. Below is 
+README from my devconfig repo.
+
+## Base Development Envrionment with React and Redux (using Typescript)
 
 After updating `babel.config.js` to use [JSX Transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html),
 functional components no longer need to import `react` with
 
 ```js script
-import React from "react";
+import React from 'react';
 ```
 
 If run into issues, if not mentioned here, check out the `Issues`
@@ -36,7 +41,7 @@ Testing only uses jest. Enzyme was removed due to a lack of an official adapter-
 If needing to use:
 
 ```javascript
-jest.spyOn(global, "fetch").mockImplementation(() =>
+jest.spyOn(global, 'fetch').mockImplementation(() =>
   Promise.resolve({
     json: () => Promise.resolve(stuff),
   }),
@@ -65,7 +70,7 @@ delete global.fetch();
 For use of absolute paths like:
 
 ```javascript
-import newFile from "&newdirname/newFile";
+import newFile from '&newdirname/newFile';
 ```
 
 update the following (assuming <code>newdirname/</code> is in <code>src/</code>):
@@ -78,9 +83,9 @@ update the following (assuming <code>newdirname/</code> is in <code>src/</code>)
 export default {
   resolve: {
     alias: {
-      "&newdirname": path.resolve(
+      '&newdirname': path.resolve(
         __dirname,
-        "../src/newdirname",
+        '../src/newdirname',
       ),
     },
   },
@@ -93,11 +98,11 @@ export default {
 ```javascript
 module.exports = {
   plugins: [
-    "module-resolver",
+    'module-resolver',
     {
-      root: ["./"],
+      root: ['./'],
       alias: {
-        "&newdirname": "./src/newdirname",
+        '&newdirname': './src/newdirname',
       },
     },
   ],
