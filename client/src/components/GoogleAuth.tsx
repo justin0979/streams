@@ -5,11 +5,13 @@ interface GoogleAuthProps {
 }
 
 const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const [isSignedIn, setIsSignedIn] = useState<boolean | null>(
+    null,
+  );
 
   useEffect(() => {
     // Load the library
-    window.gapi.load('client.auth2', () => {
+    window.gapi.load('client:auth2', () => {
       // Initialize the library
       window.gapi.client
         .init({
@@ -24,7 +26,21 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
     });
   }, []);
 
-  return <div className={`${props.className}`}>GoogleAuth</div>;
+  const renderAuthButton = (): JSX.Element => {
+    if (isSignedIn === null) {
+      return <div>I don&apos;t know if you are signed in</div>;
+    } else if (isSignedIn) {
+      return <div>I Am Signed In!</div>;
+    } else {
+      return <div>I am not signed in</div>;
+    }
+  };
+
+  return (
+    <div className={`${props.className}`}>
+      {renderAuthButton()}
+    </div>
+  );
 };
 
 export default GoogleAuth;
