@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
 interface GoogleAuthProps {
-  className: string;
+  className?: string;
 }
 
 const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
-  let auth: gapi.auth2.GoogleAuth;
+  const [auth, setAuth] = useState<gapi.auth2.GoogleAuth>();
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(
     null,
   );
@@ -21,24 +21,48 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
           scope: 'email',
         })
         .then(() => {
-          auth = window.gapi.auth2.getAuthInstance();
-          setIsSignedIn(auth.isSignedIn.get());
-          auth.isSignedIn.listen(onAuthChange);
+          const _auth = window.gapi.auth2.getAuthInstance();
+          setIsSignedIn(_auth.isSignedIn.get());
+          _auth.isSignedIn.listen(() => onAuthChange(_auth));
+          setAuth(_auth);
         });
     });
   }, []);
 
-  const onAuthChange = () => {
-    setIsSignedIn(auth.isSignedIn.get());
+  const onAuthChange = (_auth: gapi.auth2.GoogleAuth) => {
+    setIsSignedIn(_auth.isSignedIn.get());
   };
 
-  const renderAuthButton = (): JSX.Element => {
+  const onSignIn = (): void => {
+    auth && auth.signIn();
+  };
+
+  const onSignOut = (): void => {
+    auth && auth.signOut();
+  };
+
+  const renderAuthButton = (): JSX.Element | null => {
     if (isSignedIn === null) {
-      return <div>I don&apos;t know if you are signed in</div>;
+      return null;
     } else if (isSignedIn) {
-      return <div>I Am Signed In!</div>;
+      return (
+        <button
+          onClick={onSignOut}
+          className="btn btn--google btn--red"
+        >
+          <span className="icon--google">G</span> Sign Out
+        </button>
+      );
     } else {
-      return <div>I am not signed in</div>;
+      return (
+        <button
+          onClick={onSignIn}
+          className="btn btn--red btn--google"
+        >
+          <span className="icon--google">G</span> Sign In with
+          Google
+        </button>
+      );
     }
   };
 
