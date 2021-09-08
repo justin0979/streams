@@ -28,17 +28,17 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
     });
   }, []);
 
-  const onAuthChange = () => {
+  const onAuthChange = (): void => {
     if (auth.current) {
       setIsSignedIn(auth.current.isSignedIn.get());
     }
   };
 
-  const onSignIn = (): void => {
+  const onSignInClick = (): void => {
     auth.current?.signIn();
   };
 
-  const onSignOut = (): void => {
+  const onSignOutClick = (): void => {
     auth.current && auth.current.signOut();
   };
 
@@ -48,7 +48,7 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
     } else if (isSignedIn) {
       return (
         <button
-          onClick={onSignOut}
+          onClick={onSignOutClick}
           className="btn btn--google btn--red"
         >
           <span className="icon--google">G</span> Sign Out
@@ -57,7 +57,7 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
     } else {
       return (
         <button
-          onClick={onSignIn}
+          onClick={onSignInClick}
           className="btn btn--red btn--google"
         >
           <span className="icon--google">G</span> Sign In with
