@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useActions } from '&hooks';
+import { useActions, useAppSelector } from '&hooks';
 
 interface GoogleAuthProps {
   className?: string;
