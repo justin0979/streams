@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface GoogleAuthProps {
   className?: string;
 }
 
 const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
-  const [auth, setAuth] = useState<gapi.auth2.GoogleAuth>();
+  const auth = useRef<gapi.auth2.GoogleAuth>();
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(
     null,
   );
@@ -21,24 +21,25 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
           scope: 'email',
         })
         .then(() => {
-          const _auth = window.gapi.auth2.getAuthInstance();
-          setIsSignedIn(_auth.isSignedIn.get());
-          _auth.isSignedIn.listen(() => onAuthChange(_auth));
-          setAuth(_auth);
+          auth.current = window.gapi.auth2.getAuthInstance();
+          setIsSignedIn(auth.current.isSignedIn.get());
+          auth.current.isSignedIn.listen(() => onAuthChange());
         });
     });
   }, []);
 
-  const onAuthChange = (_auth: gapi.auth2.GoogleAuth) => {
-    setIsSignedIn(_auth.isSignedIn.get());
+  const onAuthChange = () => {
+    if (auth.current) {
+      setIsSignedIn(auth.current.isSignedIn.get());
+    }
   };
 
   const onSignIn = (): void => {
-    auth && auth.signIn();
+    auth.current?.signIn();
   };
 
   const onSignOut = (): void => {
-    auth && auth.signOut();
+    auth.current && auth.current.signOut();
   };
 
   const renderAuthButton = (): JSX.Element | null => {
