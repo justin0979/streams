@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useActions } from '&hooks';
 
 interface GoogleAuthProps {
   className?: string;
@@ -9,6 +10,7 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(
     null,
   );
+  const { signIn, signOut } = useActions();
 
   useEffect(() => {
     // Load the library
@@ -23,14 +25,16 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
         .then(() => {
           auth.current = window.gapi.auth2.getAuthInstance();
           setIsSignedIn(auth.current.isSignedIn.get());
-          auth.current.isSignedIn.listen(() => onAuthChange());
+          auth.current.isSignedIn.listen((e) => onAuthChange(e));
         });
     });
   }, []);
 
-  const onAuthChange = (): void => {
-    if (auth.current) {
-      setIsSignedIn(auth.current.isSignedIn.get());
+  const onAuthChange = (isSignedIn: boolean): void => {
+    if (isSignedIn) {
+      signIn();
+    } else {
+      signOut();
     }
   };
 
