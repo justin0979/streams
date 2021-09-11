@@ -30,7 +30,7 @@ const GoogleAuth: React.FC<GoogleAuthProps> = (props) => {
 
   const onAuthChange = (checkSignedIn: boolean): void => {
     if (checkSignedIn) {
-      signIn();
+      signIn(auth.current?.currentUser.get().getId());
     } else {
       signOut();
     }
