@@ -1,0 +1,20 @@
+{
+  "name": "streams",
+  "version": "1.0.0",
+  "description": "Uses my [development configuration](https://github.com/justin0979/devconfig/tree/react-ts)",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin0979/streams.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justin0979/streams/issues"
+  },
+  "homepage": "https://github.com/justin0979/streams#readme"
+}
