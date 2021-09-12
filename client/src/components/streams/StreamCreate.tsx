@@ -1,9 +1,29 @@
-const StreamCreate: React.FC = () => {
+import {
+  Field,
+  WrappedFieldProps,
+  InjectedFormProps,
+  reduxForm,
+} from 'redux-form';
+
+const StreamCreate: React.FC<InjectedFormProps> = (props) => {
+  const renderInput = (formProps: WrappedFieldProps) => {
+    return (
+      <input
+        type="text"
+        onChange={formProps.input.onChange}
+        value={formProps.input.value}
+      />
+    );
+  };
+
   return (
-    <div>
-      <input type="text" />
-    </div>
+    <form>
+      <Field name="title" component={renderInput} />
+      <Field name="description" component={renderInput} />
+    </form>
   );
 };
 
-export default StreamCreate;
+export default reduxForm({
+  form: 'streamCreate',
+})(StreamCreate);
