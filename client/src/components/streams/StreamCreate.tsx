@@ -6,13 +6,7 @@ import {
 } from 'redux-form';
 
 const renderInput = (formProps: WrappedFieldProps) => {
-  return (
-    <input
-      type="text"
-      onChange={formProps.input.onChange}
-      value={formProps.input.value}
-    />
-  );
+  return <input type="text" {...formProps.input} />;
 };
 
 const StreamCreate: React.FC<InjectedFormProps> = (props) => {
