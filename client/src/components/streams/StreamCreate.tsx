@@ -5,17 +5,17 @@ import {
   reduxForm,
 } from 'redux-form';
 
-const StreamCreate: React.FC<InjectedFormProps> = (props) => {
-  const renderInput = (formProps: WrappedFieldProps) => {
-    return (
-      <input
-        type="text"
-        onChange={formProps.input.onChange}
-        value={formProps.input.value}
-      />
-    );
-  };
+const renderInput = (formProps: WrappedFieldProps) => {
+  return (
+    <input
+      type="text"
+      onChange={formProps.input.onChange}
+      value={formProps.input.value}
+    />
+  );
+};
 
+const StreamCreate: React.FC<InjectedFormProps> = (props) => {
   return (
     <form>
       <Field name="title" component={renderInput} />
