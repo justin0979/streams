@@ -12,7 +12,7 @@ interface CustomFormProps extends WrappedFieldProps {
 const renderInput = (formProps: CustomFormProps) => {
   console.log(formProps);
   return (
-    <div className="field">
+    <div className="form__field">
       <label>{formProps.label}</label>
       <input type="text" {...formProps.input} />
     </div>
@@ -21,7 +21,7 @@ const renderInput = (formProps: CustomFormProps) => {
 
 const StreamCreate: React.FC<InjectedFormProps> = (props) => {
   return (
-    <form>
+    <form className="form">
       <Field
         name="title"
         component={renderInput}
