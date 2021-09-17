@@ -5,15 +5,33 @@ import {
   reduxForm,
 } from 'redux-form';
 
-const renderInput = (formProps: WrappedFieldProps) => {
-  return <input type="text" {...formProps.input} />;
+interface CustomFormProps extends WrappedFieldProps {
+  label?: string;
+}
+
+const renderInput = (formProps: CustomFormProps) => {
+  console.log(formProps);
+  return (
+    <div className="field">
+      <label>{formProps.label}</label>
+      <input type="text" {...formProps.input} />
+    </div>
+  );
 };
 
 const StreamCreate: React.FC<InjectedFormProps> = (props) => {
   return (
     <form>
-      <Field name="title" component={renderInput} />
-      <Field name="description" component={renderInput} />
+      <Field
+        name="title"
+        component={renderInput}
+        label="Enter Title"
+      />
+      <Field
+        name="description"
+        component={renderInput}
+        label="Enter Description"
+      />
     </form>
   );
 };
