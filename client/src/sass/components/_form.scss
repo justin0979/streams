@@ -20,6 +20,11 @@
 
       border: solid 2px rgba(gray, 0.2);
       border-radius: 5px;
+
+      &:focus {
+        outline: none;
+        border-bottom: solid 3px rgba(green, 0.3);
+      }
     }
   }
 }
