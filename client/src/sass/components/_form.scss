@@ -5,6 +5,7 @@
   &__field {
     display: flex;
     flex-direction: column;
+    height: 8rem;
 
     &:not(:first-child) {
       margin-top: 1.5rem;
@@ -13,18 +14,6 @@
     & label {
       font-size: 1.4rem;
       margin-bottom: 0.5rem;
-    }
-
-    & input {
-      padding: 1rem;
-
-      border: solid 2px rgba(gray, 0.2);
-      border-radius: 5px;
-
-      &:focus {
-        outline: none;
-        border-bottom: solid 3px rgba(green, 0.3);
-      }
     }
   }
 }
