@@ -3,6 +3,21 @@
   font-size: 1.6rem;
   border: 1px solid transparent;
   border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  }
+
+  &--primary {
+    padding: 1rem 2rem;
+    background-color: #0080ff;
+    color: white;
+    font-weight: 700;
+    width: max-content;
+    margin: 1rem 0;
+  }
 
   &--google {
     font-family: 'Roboto', sans-serif;
