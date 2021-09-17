@@ -1,5 +1,20 @@
 .message {
+  transition: all 0.3s;
+
   &__error {
     color: red;
+    position: absolute;
+    top: 4rem;
+    animation: fadeIn 1s linear;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

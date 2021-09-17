@@ -1,11 +1,25 @@
 .input {
   padding: 1rem;
-
   border: solid 2px rgba(gray, 0.2);
   border-radius: 5px;
+  transition: all 0.3s;
 
   &:focus {
     outline: none;
     border-bottom: solid 3px rgba(0, 0, 255, 0.5);
+  }
+
+  &__label {
+    color: rgba(gray, 0.9);
+    font-size: 1.4rem;
+    padding-left: 1rem;
+    top: 1rem;
+    transform: translateY(0.7rem);
+    transition: all 0.3s;
+  }
+
+  &:placeholder-shown + &__label {
+    opacity: 0;
+    transform: translateY(-2rem);
   }
 }

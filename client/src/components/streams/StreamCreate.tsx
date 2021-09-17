@@ -35,12 +35,16 @@ const StreamCreate: React.FC<InjectedFormProps> = (props) => {
     (formProps: CustomFormProps) => {
       return (
         <div className="form__field">
-          <label>{formProps.label}</label>
           <input
             className="input"
             {...formProps.input}
+            placeholder={formProps.label}
             autoComplete="off"
           />
+          <label className="input__label">
+            {formProps.label &&
+              formProps.label.split(' ').splice(1, 2).join('')}
+          </label>
           {renderError(formProps.meta)}
         </div>
       );
