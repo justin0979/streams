@@ -31,12 +31,22 @@ const StreamCreate: React.FC<InjectedFormProps> = (props) => {
     }
   };
 
+  const styleInput = ({
+    touched,
+    error,
+  }: WrappedFieldMetaProps): string => {
+    if (touched && error) {
+      return 'input input__error';
+    }
+    return 'input';
+  };
+
   const renderInput = useCallback(
     (formProps: CustomFormProps) => {
       return (
         <div className="form__field">
           <input
-            className="input"
+            className={`${styleInput(formProps.meta)}`}
             {...formProps.input}
             placeholder={formProps.label}
             autoComplete="off"
