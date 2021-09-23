@@ -1,3 +1,4 @@
+import { FormValuesType } from '&src/formValuesTypes';
 import { ActionType } from '&state/action-types';
 
 export interface SignInAction {
@@ -12,6 +13,7 @@ export interface SignOutAction {
 
 export interface CreateStreamAction {
   type: ActionType.CREATE_STREAM;
+  payload: FormValuesType;
 }
 
 export type Action =
