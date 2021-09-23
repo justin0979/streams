@@ -1,6 +1,6 @@
+export * from './auth';
+
 export enum ActionType {
-  SIGN_IN = 'SIGN_IN',
-  SIGN_OUT = 'SIGN_OUT',
   CREATE_STREAM = 'CREATE_STREAM',
   FETCH_STREAMS = 'FETCH_STREAMS',
   FETCH_STREAM = 'FETCH_STREAM',
