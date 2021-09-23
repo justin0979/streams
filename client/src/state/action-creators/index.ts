@@ -1,8 +1,10 @@
 import { Dispatch } from 'redux';
+import { AxiosResponse } from 'axios';
 import { ActionType } from '&state/action-types';
 import {
   SignInAction,
   SignOutAction,
+  CreateStreamAction,
   Action,
 } from '&state/actions';
 import streams from '&apis/streams';
@@ -27,5 +29,11 @@ export const signOut = (): SignOutAction => {
 export const createStream =
   (formValues: FormValuesType) =>
   async (dispatch: Dispatch<Action>) => {
-    streams.post('/streams', formValues);
+    const response: AxiosResponse<FormValuesType> =
+      await streams.post('/streams', formValues);
+
+    dispatch({
+      type: ActionType.CREATE_STREAM,
+      payload: response.data,
+    });
   };
