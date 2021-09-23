@@ -7,14 +7,10 @@ import {
   reduxForm,
   FormSubmitHandler,
 } from 'redux-form';
+import { FormValuesType } from '&src/formValuesTypes';
 
 interface CustomFormProps extends WrappedFieldProps {
   label?: string;
-}
-
-interface ValidateFormValues {
-  title?: string;
-  description?: string;
 }
 
 const StreamCreate: React.FC<InjectedFormProps> = (props) => {
@@ -82,9 +78,9 @@ const StreamCreate: React.FC<InjectedFormProps> = (props) => {
 };
 
 const validate = (
-  formValues: ValidateFormValues,
-): ValidateFormValues => {
-  const errors: ValidateFormValues = {};
+  formValues: FormValuesType,
+): FormValuesType => {
+  const errors: FormValuesType = {};
 
   if (!formValues.title) {
     errors.title = 'You must enter a title';

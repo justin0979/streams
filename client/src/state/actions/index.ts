@@ -10,4 +10,11 @@ export interface SignOutAction {
   payload: null;
 }
 
-export type Action = SignOutAction | SignInAction;
+export interface CreateStreamAction {
+  type: ActionType.CREATE_STREAM;
+}
+
+export type Action =
+  | SignOutAction
+  | SignInAction
+  | CreateStreamAction;
