@@ -16,7 +16,31 @@ export interface CreateStreamAction {
   payload: FormValuesType;
 }
 
+export interface FetchStreamsAction {
+  type: ActionType.FETCH_STREAMS;
+  payload: FormValuesType[];
+}
+
+export interface FetchStreamAction {
+  type: ActionType.FETCH_STREAM;
+  payload: FormValuesType;
+}
+
+export interface DeleteStreamAction {
+  type: ActionType.DELETE_STREAM;
+  payload: null;
+}
+
+export interface EditStreamAction {
+  type: ActionType.EDIT_STREAM;
+  payload: FormValuesType;
+}
+
 export type Action =
   | SignOutAction
   | SignInAction
-  | CreateStreamAction;
+  | CreateStreamAction
+  | FetchStreamsAction
+  | FetchStreamAction
+  | DeleteStreamAction
+  | EditStreamAction;
