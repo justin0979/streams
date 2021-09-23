@@ -8,12 +8,14 @@ import {
   FormSubmitHandler,
 } from 'redux-form';
 import { FormValuesType } from '&src/formValuesTypes';
+import { useActions } from '&hooks';
 
 interface CustomFormProps extends WrappedFieldProps {
   label?: string;
 }
 
 const StreamCreate: React.FC<InjectedFormProps> = (props) => {
+  const { createStream } = useActions();
   const renderError = ({
     error,
     touched,
@@ -53,8 +55,8 @@ const StreamCreate: React.FC<InjectedFormProps> = (props) => {
     [],
   );
 
-  const onSubmit: FormSubmitHandler = (formValues) => {
-    console.log(formValues);
+  const onSubmit = (formValues: FormValuesType) => {
+    createStream(formValues);
   };
 
   return (

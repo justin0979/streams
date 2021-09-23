@@ -3,7 +3,6 @@ import { ActionType } from '&state/action-types';
 import {
   SignInAction,
   SignOutAction,
-  CreateStreamAction,
   Action,
 } from '&state/actions';
 import streams from '&apis/streams';
