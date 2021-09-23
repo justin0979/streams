@@ -1,5 +1,8 @@
 import { FormValuesType } from '&src/formValuesTypes';
-import { AuthActionType, ActionType } from '&state/action-types';
+import {
+  AuthActionType,
+  RestActionType,
+} from '&state/action-types';
 
 export interface SignInAction {
   type: AuthActionType.SIGN_IN;
@@ -12,27 +15,27 @@ export interface SignOutAction {
 }
 
 export interface CreateStreamAction {
-  type: ActionType.CREATE_STREAM;
+  type: RestActionType.CREATE_STREAM;
   payload: FormValuesType;
 }
 
 export interface FetchStreamsAction {
-  type: ActionType.FETCH_STREAMS;
+  type: RestActionType.FETCH_STREAMS;
   payload: FormValuesType[];
 }
 
 export interface FetchStreamAction {
-  type: ActionType.FETCH_STREAM;
+  type: RestActionType.FETCH_STREAM;
   payload: FormValuesType;
 }
 
 export interface DeleteStreamAction {
-  type: ActionType.DELETE_STREAM;
+  type: RestActionType.DELETE_STREAM;
   payload: null;
 }
 
 export interface EditStreamAction {
-  type: ActionType.EDIT_STREAM;
+  type: RestActionType.EDIT_STREAM;
   payload: FormValuesType;
 }
 

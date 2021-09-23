@@ -1,5 +1,5 @@
 import { Action } from '&state/actions';
-import { AuthActionType, ActionType } from '&state/action-types';
+import { AuthActionType } from '&state/action-types';
 
 interface AuthReducerState {
   isSignedIn: boolean | null;
