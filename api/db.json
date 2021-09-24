@@ -1,3 +1,19 @@
 {
-  "streams": []
+  "streams": [
+    {
+      "title": "Title",
+      "description": "Good Description",
+      "id": 1
+    },
+    {
+      "title": "Next Title",
+      "description": "Also a good description",
+      "id": 2
+    },
+    {
+      "title": "Third title",
+      "description": "Erase this one",
+      "id": 3
+    }
+  ]
 }
