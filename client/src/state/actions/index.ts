@@ -1,4 +1,4 @@
-import {FormValuesType} from '&src/formValuesTypes';
+import { FormValuesType } from '&src/formValuesTypes';
 import {
   AuthActionType,
   RestActionType,
@@ -31,7 +31,7 @@ export interface FetchStreamAction {
 
 export interface DeleteStreamAction {
   type: RestActionType.DELETE_STREAM;
-  payload: number;
+  payload: string;
 }
 
 export interface EditStreamAction {
