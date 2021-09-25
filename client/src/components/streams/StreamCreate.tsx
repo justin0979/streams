@@ -7,7 +7,7 @@ import {
   reduxForm,
   FormSubmitHandler,
 } from 'redux-form';
-import { FormValuesType } from '&src/formValuesTypes';
+import { SubmitFormValues } from '&src/CustomTypes';
 import { useActions } from '&hooks';
 
 interface CustomFormProps extends WrappedFieldProps {
@@ -55,7 +55,7 @@ const StreamCreate: React.FC<InjectedFormProps> = (props) => {
     [],
   );
 
-  const onSubmit = (formValues: FormValuesType) => {
+  const onSubmit = (formValues: SubmitFormValues) => {
     createStream(formValues);
   };
 
@@ -80,9 +80,9 @@ const StreamCreate: React.FC<InjectedFormProps> = (props) => {
 };
 
 const validate = (
-  formValues: FormValuesType,
-): FormValuesType => {
-  const errors: FormValuesType = {};
+  formValues: SubmitFormValues,
+): SubmitFormValues => {
+  const errors: SubmitFormValues = {};
 
   if (!formValues.title) {
     errors.title = 'You must enter a title';

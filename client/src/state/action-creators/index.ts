@@ -10,7 +10,10 @@ import {
   Action,
 } from '&state/actions';
 import streams from '&apis/streams';
-import { FormValuesType } from '&src/formValuesTypes';
+import {
+  SubmitFormValues,
+  StoredFormValues,
+} from '&src/CustomTypes';
 
 export const signIn = (
   userId: string | undefined,
@@ -29,9 +32,9 @@ export const signOut = (): SignOutAction => {
 };
 
 export const createStream =
-  (formValues: FormValuesType) =>
+  (formValues: SubmitFormValues) =>
   async (dispatch: Dispatch<Action>) => {
-    const response: AxiosResponse<FormValuesType> =
+    const response: AxiosResponse<StoredFormValues> =
       await streams.post('/streams', formValues);
 
     dispatch({
@@ -61,12 +64,10 @@ export const fetchStream =
   };
 
 export const editStream =
-  (id: string, formValues: FormValuesType) =>
+  (id: string, formValues: StoredFormValues) =>
   async (dispatch: Dispatch<Action>) => {
-    const response = await streams.put(
-      `/streams/${id}`,
-      formValues,
-    );
+    const response: AxiosResponse<StoredFormValues> =
+      await streams.put(`/streams/${id}`, formValues);
 
     dispatch({
       type: RestActionType.EDIT_STREAM,

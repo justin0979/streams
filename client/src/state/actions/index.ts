@@ -1,4 +1,4 @@
-import { FormValuesType } from '&src/formValuesTypes';
+import { StoredFormValues } from '&src/CustomTypes';
 import {
   AuthActionType,
   RestActionType,
@@ -16,17 +16,17 @@ export interface SignOutAction {
 
 export interface CreateStreamAction {
   type: RestActionType.CREATE_STREAM;
-  payload: FormValuesType;
+  payload: StoredFormValues;
 }
 
 export interface FetchStreamsAction {
   type: RestActionType.FETCH_STREAMS;
-  payload: FormValuesType[];
+  payload: StoredFormValues[];
 }
 
 export interface FetchStreamAction {
   type: RestActionType.FETCH_STREAM;
-  payload: FormValuesType;
+  payload: StoredFormValues;
 }
 
 export interface DeleteStreamAction {
@@ -36,7 +36,7 @@ export interface DeleteStreamAction {
 
 export interface EditStreamAction {
   type: RestActionType.EDIT_STREAM;
-  payload: FormValuesType;
+  payload: StoredFormValues;
 }
 
 export type Action =
